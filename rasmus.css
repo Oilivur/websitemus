@@ -1,0 +1,84 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.main-container {
+    position: relative;
+    text-align: center;
+    color: orange;
+}
+.pealkiri {
+    position: absolute;
+    left: 40%;
+    right: 50%;
+    top: 5%;
+    font-family: 'Dancing Script', cursive;
+    font-size: 140px;
+    font-weight: 800;
+    rotate: -5deg;
+}
+.alatekst {
+    position: absolute;
+    top: 20%;
+    font-family: 'Dancing Script', cursive;
+    font-size: 120px;
+    font-weight: 800;
+    width: 100%;
+}
+.alatekst1 {
+    rotate: -10deg;
+    margin-right: 25%;
+    margin-top: 20px;
+}
+.alatekst2 {
+    margin-top: -10%;
+}
+.alatekst3 {
+    rotate: 10deg;
+    margin-left: 28%;
+    margin-top: -7.5%;
+}
+.taust {
+    width: 100%;
+    max-height: 860px;
+    padding: 0;
+    margin: 0;
+    filter: hue-rotate(340deg);
+}
+.suvatekst {
+    font-family: 'raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    position: absolute;
+    font-size: 18px;
+    top: 88%;
+    width: 100%;
+    font-weight: 200;
+}
+.nupp1 {
+    position: absolute;
+    top: 92%;
+    left: 38%;
+    color: orange;
+    background-color: transparent;
+    font-size: 18px;
+    border-color: orange;
+    padding: 6px 20px;
+    transition: 0.25s;
+}
+.nupp2 {
+    position: absolute;
+    top: 92%;
+    right: 38%;
+    color: orange;
+    background-color: transparent;
+    font-size: 18px;
+    border-color: orange;
+    padding: 6px 5px;
+    transition: 0.25s;
+}
+.nupp1:hover, .nupp2:hover {
+    background-color: white;
+    color: rgb(76, 74, 74);
+}
