@@ -1,6 +1,6 @@
 html, body {
     height: 100svh; 
-    width: 100%;
+    width: 100svw;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -28,9 +28,11 @@ h2 {
     text-align: center;
     top: 30%;
     left: 50%;
+    width: 100%;
     transform: translate(-50%, -50%);
     font-size: 120px;
     rotate: -4deg;
+    border: 2px solid blue;
 }
 h3 {
     position: fixed;
@@ -39,15 +41,19 @@ h3 {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 200;
+    font-weight: 400;
     font-size: 22px;
 }
 .nupud {
+    display: flex;
+    justify-content: center;
     position: fixed;
     bottom: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    border: 2px solid rebeccapurple;
+    width: 100%;
 }
 .nupp1 {
     color: orange;
