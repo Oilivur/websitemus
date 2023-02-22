@@ -19,32 +19,18 @@ h1 {
     text-align: center;
     display: block;
     top: 5%;
-    font-size: 140px;
+    font-size: 160px;
     font-weight: 800;
     rotate: -5deg;
 }
 h2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    position: relative;
+    position: fixed;
     text-align: center;
-    top: 12%;
-    left: 46%;
+    top: 30%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 100px;
-    width: 30%;
-    height: 150px;
-}
-.text1, .text2, .text3 {
-    margin: 0;
-}
-.text1 {
-    rotate: -10deg;
-    margin: 20px;
-}
-.text3 {
-    rotate: 10deg;
-    margin: 20px;
+    font-size: 120px;
+    rotate: -4deg;
 }
 h3 {
     position: fixed;
@@ -54,6 +40,7 @@ h3 {
     transform: translate(-50%, -50%);
     font-family: 'raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 200;
+    font-size: 22px;
 }
 .nupud {
     position: fixed;
@@ -65,7 +52,7 @@ h3 {
 .nupp1 {
     color: orange;
     background-color: transparent;
-    font-size: 18px;
+    font-size: 22px;
     border: 1px solid orange;
     padding: 6px 20px;
     transition: 0.25s;
@@ -74,7 +61,7 @@ h3 {
 .nupp2 {
     color: orange;
     background-color: transparent;
-    font-size: 18px;
+    font-size: 22px;
     border: 1px solid orange;
     padding: 6px 5px;
     transition: 0.25s;
