@@ -1,25 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Websitemus</title>
-        <link rel="stylesheet" href="rasmus.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
-        <style>
-            body {
-                opacity: 0;
-                transition: opacity 3s;
-            }
-        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <title>Rasmus Kalep - Music Page</title>
     </head>
-    <body onLoad="document.body.style.opacity='1'">
-        <h1>Rasmus</h1>
-        <h2>"Ma Joon Viina"</h2>
-        <h3>MUUSIKAVIDEO VÄLJAS NÜÜD</h3>
-        <div class="nupud">
-            <a href="https://www.youtube.com/watch?v=yi2K40YOBXk" target="_blank" class="nupp1">VAATA SIIN</a>
-            <a href="https://tmyc.ee/cliff/" target="_blank" class="nupp2">OSTA EKSKLUSIIVSET KAUPA</a>
+    <body>
+        <header>
+            <h1>Rasmus Kalep</h1>
+            <p class="head-p">Muusik | Songwriter | Performer</p>
+        </header>
+    
+        <div class="content">
+            <section id="bio">
+                <h2>Minust</h2>
+                <p>Tere, mina olen Rasmus, mulle meeldib laulda.</p>
+                <!-- Add more details about yourself here -->
+            </section>
+    
+            <section id="discography">
+                <h2>Discography</h2>
+                <ul>
+                    <li>📀 Rasmus Kalep vs Maailm 2023</li>
+                    <li>📀 Maailm vs Rasmus Kalep 2024</li>
+                    <!-- Add more albums and singles -->
+                </ul>
+            </section>
+    
+            <div id="player"></div>
+    
+            <!-- Include the YouTube API Script -->
+            <script src="https://www.youtube.com/iframe_api"></script>
+            <script>
+                // Replace 'YOUR_VIDEO_ID' with the actual YouTube video ID
+                var videoId = '5hb-_0UG7OA';
+    
+                var player;
+    
+                function onYouTubeIframeAPIReady() {
+                    player = new YT.Player('player', {
+                        height: '360', // Adjust the height as needed
+                        width: '640',  // Adjust the width as needed
+                        videoId: videoId,
+                        events: {
+                            'onReady': onPlayerReady,
+                            // Add any other event handlers as needed
+                        }
+                    });
+                }
+    
+                function onPlayerReady(event) {
+                    // You can add additional code here once the player is ready
+                }
+            </script>
+            
+            <section id="social-media">
+                <h2>Connect with Me</h2>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/rasmus.kalep/?locale=et_EE" target="_blank">
+                        <img src="pildid/facebook.svg" alt="Facebook Icon" class="svg">
+                    </a>
+                    <a href="https://www.instagram.com/rasmuskalep/" target="_blank">
+                        <img src="pildid/instagram.svg" alt="Instagram Icon" class="svg">
+                    </a>
+                    <a href="https://www.youtube.com/@rasmuskalep" target="_blank">
+                        <img src="pildid/youtube.svg" alt="Youtube Icon" class="svg">
+                    </a>
+                </div>
+            </section>
         </div>
+    
+        <footer>
+            <p class="foot-p">&copy; 2023 Rasmus Kalep. All rights reserved.</p>
+        </footer>
     </body>
 </html>

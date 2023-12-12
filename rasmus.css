@@ -6,7 +6,7 @@ html, body {
     overflow: hidden;
     background: url("pildid/Rasmus.jpg") no-repeat center center fixed;
     background-size: 100% 100%;
-    color: orange;
+    color: #ffa500;
     filter: hue-rotate(350deg);
 }
 h1, h2 {

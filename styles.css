@@ -1,0 +1,117 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('pildid/Rass.jpeg'); /* Replace with the path to your image */
+    background-size: 100% 110%; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body takes at least the full height of the viewport */
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+header {
+    background: linear-gradient(to top, rgb(37, 37, 145), #120777d2);
+    color: #d25c5c;
+    text-align: center;
+    padding: 1rem;
+}
+
+.head-p {
+    font-size: 16px;
+}
+
+.content {
+    display: flex; /* Add this line to set display property to flex */
+    flex-direction: column; /* Adjust as needed */
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+h2 {
+    text-align: center; /* Center-align the text within h2 */
+    color: #d25c5c;
+    font-size: 32px;
+}
+
+p {
+    margin: 0;
+    color: #ec7c13;
+    font-size: 24px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+section {
+    padding: 2rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+#social-media {
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container */
+}
+
+.social-icons a {
+    display: flex;
+    flex-grow: 1; /* Allow each item to grow and take available space */
+    justify-content: center; /* Center content horizontally */
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 20px; /* Add a small margin to create spacing */
+}
+
+.social-icons a img {
+    width: 50px;
+    height: auto;
+}
+
+.svg {
+    filter: invert(79%) sepia(63%) saturate(4268%) hue-rotate(359deg) brightness(102%) contrast(107%);
+    transition: filter 0.3s ease;
+}
+
+.svg:hover {
+    filter: invert(79%) sepia(40%) saturate(7490%) hue-rotate(321deg) brightness(88%) contrast(84%);
+}
+
+footer {
+    background: linear-gradient(to bottom, rgb(37, 37, 145), #120777d2);
+    text-align: center;
+    padding: 1rem;
+    color: #fff;
+    margin-top: auto;
+}
+
+.foot-p {
+    font-size: 14px;
+}
+
