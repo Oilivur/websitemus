@@ -68,6 +68,13 @@ li {
     font-weight: 700;
 }
 
+@media (max-width: 768px) {
+    #player {
+        width: 80%; /* Adjust the width as needed */
+        height: auto;
+    }
+}
+
 #social-media {
     text-align: center;
 }
