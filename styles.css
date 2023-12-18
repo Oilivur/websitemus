@@ -18,8 +18,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 header {
-    background: linear-gradient(to top, rgb(37, 37, 145), #120777d2);
-    color: #d25c5c;
+    background: linear-gradient(to bottom, #1c386d, #174483);
+    color: #ffffff; /* White text */
     text-align: center;
     padding: 1rem;
 }
@@ -42,13 +42,13 @@ h1 {
 
 h2 {
     text-align: center; /* Center-align the text within h2 */
-    color: #d25c5c;
+    color: #ceadf0; /* Light Red */
     font-size: 32px;
 }
 
 p {
     margin: 0;
-    color: #ec7c13;
+    color: #dfd7e7;
     font-size: 24px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -66,6 +66,7 @@ li {
     margin-bottom: 0.5rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+    color: wheat;
 }
 
 @media (max-width: 768px) {
@@ -102,7 +103,7 @@ li {
 }
 
 .svg {
-    filter: invert(79%) sepia(63%) saturate(4268%) hue-rotate(359deg) brightness(102%) contrast(107%);
+    filter: invert(83%) sepia(33%) saturate(1146%) hue-rotate(196deg) brightness(93%) contrast(103%);
     transition: filter 0.3s ease;
 }
 
@@ -111,7 +112,7 @@ li {
 }
 
 footer {
-    background: linear-gradient(to bottom, rgb(37, 37, 145), #120777d2);
+    background: linear-gradient(to bottom, #1c386d, #174483);
     text-align: center;
     padding: 1rem;
     color: #fff;
