@@ -29,33 +29,15 @@
                     <!-- Add more albums and singles -->
                 </ul>
             </section>
-    
-            <div id="player"></div>
-    
-            <!-- Include the YouTube API Script -->
-            <script src="https://www.youtube.com/iframe_api"></script>
-            <script>
-                // Replace 'YOUR_VIDEO_ID' with the actual YouTube video ID
-                var videoId = 'BXiNQ1tD6_g';
-                // https://www.youtube.com/watch?v=BXiNQ1tD6_g
-                var player;
-    
-                function onYouTubeIframeAPIReady() {
-                    player = new YT.Player('player', {
-                        height: '360', // Adjust the height as needed
-                        width: '640',  // Adjust the width as needed
-                        videoId: videoId,
-                        events: {
-                            'onReady': onPlayerReady,
-                            // Add any other event handlers as needed
-                        }
-                    });
-                }
-    
-                function onPlayerReady(event) {
-                    // You can add additional code here once the player is ready
-                }
-            </script>
+
+            <section>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2jfnKffr4qi3eO32XKlZ8z?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </section>
+
+            <audio controls autoplay loop style="display: none;">
+                <source src="assets/Websitemus.m4a" type="audio/mp4">
+                Your browser does not support the audio element.
+            </audio>
             
             <section id="social-media">
                 <h2>Connect with Me</h2>
