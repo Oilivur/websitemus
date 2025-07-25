@@ -12,21 +12,23 @@
 <body>
   <h1>Competition Results</h1>
   <pre id="results">Loading…</pre>
-  <script>
-    fetch('/data/results.json')
-      .then(res => {
-        if (!res.ok) throw new Error(res.statusText);
-        return res.json();
-      })
-      .then(json => {
-        document.getElementById('results').textContent =
-          JSON.stringify(json, null, 2);
-      })
-      .catch(err => {
-        document.getElementById('results').textContent =
-          'Error loading results: ' + err;
-        console.error(err);
-      });
-  </script>
+    <script>
+      const url = `/data/results.json?t=${Date.now()}`;
+      fetch(url, { cache: 'no-store' })
+        .then(res => {
+          if (!res.ok) throw new Error(res.statusText);
+          return res.json();
+        })
+        .then(json => {
+          document.getElementById('results').textContent =
+            JSON.stringify(json, null, 2);
+        })
+        .catch(err => {
+          document.getElementById('results').textContent =
+            'Error loading results: ' + err;
+          console.error(err);
+        });
+    </script>
+
 </body>
 </html>
