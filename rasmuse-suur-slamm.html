@@ -1,34 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
   <title>Rasmuse Suur Slämm</title>
   <style>
-    body { font-family: sans-serif; padding: 1em; }
-    pre  { background: #f5f5f5; padding: 1em; overflow: auto; }
+    body { font-family: sans-serif; margin:1em; }
+    .comp-box {
+      border:1px solid #ccc; padding:1em; margin-bottom:1em;
+      border-radius:8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .comp-title { font-size:1.2em; margin-bottom:.5em; }
+    .podium {
+      display: flex; justify-content: center;
+      align-items: flex-end; gap:1em;
+    }
+    .podium > div {
+      background: #eee; text-align:center;
+      padding: .5em; border-radius:4px;
+      position: relative;
+    }
+    .podium .first  { flex:1.2; height: 150px; background:#ffd700; }
+    .podium .second { flex:1;   height: 120px; background:#c0c0c0; }
+    .podium .third  { flex:1;   height: 100px; background:#cd7f32; }
+    .podium img {
+      width:40px; height:40px;
+      border-radius:50%; object-fit:cover;
+      position: absolute; bottom: 5px;
+    }
+    .podium .first img  { left:50%; transform:translateX(-50%); }
+    .podium .second img { left:25%; transform:translateX(-50%); }
+    .podium .third img  { left:75%; transform:translateX(-50%); }
+    .team-label {
+      position:absolute; top:5px; width:100%;
+      font-weight:bold;
+    }
   </style>
 </head>
 <body>
   <h1>Competition Results</h1>
-  <pre id="results">Loading…</pre>
-    <script>
-      const url = `/data/results.json?t=${Date.now()}`;
-      fetch(url, { cache: 'no-store' })
-        .then(res => {
-          if (!res.ok) throw new Error(res.statusText);
-          return res.json();
-        })
-        .then(json => {
-          document.getElementById('results').textContent =
-            JSON.stringify(json, null, 2);
-        })
-        .catch(err => {
-          document.getElementById('results').textContent =
-            'Error loading results: ' + err;
-          console.error(err);
+  <div id="results"></div>
+  <script>
+    fetch('/data/results.json?t=' + Date.now(), { cache:'no-store' })
+      .then(r => r.json())
+      .then(arr => {
+        let container = document.getElementById('results');
+        container.innerHTML = '';
+        arr.forEach(comp => {
+          // Only show top 3 teams
+          let box = document.createElement('div');
+          box.className = 'comp-box';
+          box.innerHTML = `<div class="comp-title">${comp.competitionName}</div>
+            <div class="podium">
+              <div class="second">
+                <div class="team-label">${comp.teams[1]?.teamName||''}</div>
+                ${renderImgs(comp.teams[1]?.players||[])}
+              </div>
+              <div class="first">
+                <div class="team-label">${comp.teams[0]?.teamName||''}</div>
+                ${renderImgs(comp.teams[0]?.players||[])}
+              </div>
+              <div class="third">
+                <div class="team-label">${comp.teams[2]?.teamName||''}</div>
+                ${renderImgs(comp.teams[2]?.players||[])}
+              </div>
+            </div>`;
+          container.appendChild(box);
         });
-    </script>
+      })
+      .catch(console.error);
 
+    function renderImgs(players) {
+      return players.map(p =>
+        `<img src="${p.imageUri}" alt="${p.name}" title="${p.name}"/>`
+      ).join('');
+    }
+  </script>
 </body>
 </html>
