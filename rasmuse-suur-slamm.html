@@ -4,84 +4,91 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Rasmuse Suur Slämm</title>
-  <style>
+<style>
+  :root {
+    --gap: 0.5rem;
+    --pad: 1rem;
+    --img-size: 4rem;
+    --label-space: 2.5rem;
+  }
+
   body {
-    font-family: sans-serif;
     margin: 0;
-    padding: 1em;
+    padding: var(--pad);
+    font-family: sans-serif;
     background: #f0f0f0;
   }
   h1 {
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: var(--pad);
   }
+
   #results {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: var(--gap);
   }
+
   .comp-box {
     background: url('assets/beach.jpg') center/cover no-repeat;
-    border-radius: 12px;
-    padding: 1em;
+    border-radius: 0.75rem;
+    padding: var(--pad);
     color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.2);
   }
   .comp-title {
-    font-size: 1.4em;
-    margin-bottom: 0.5em;
+    font-size: 1.5rem;
+    margin-bottom: var(--gap);
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
   }
+
   .podium {
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 0.5em;
-    /* allow sideways scroll on mobile */
-    overflow-x: auto;
+    gap: var(--gap);
+    height: auto;            /* allow box to grow */
   }
   .podium > div {
-    position: relative;
-    flex-shrink: 0;
-    padding-top: 32px; /* space so images don’t cover the label */
-    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* weights: first=1.2, others=1 */
+    flex: 1;
+    padding-top: var(--label-space);
+    border-radius: 0.375rem;
   }
-  .first  { width: 30%; height: 150px; background: rgba(255,215,0,0.9); }
-  .second { width: 25%; height: 120px; background: rgba(192,192,192,0.9); }
-  .third  { width: 25%; height: 100px; background: rgba(205,127,50,0.9); }
+  .first  { flex: 1.2; height: 12rem; background: rgba(255,215,0,0.9); }
+  .second { flex: 1;   height: 10rem; background: rgba(192,192,192,0.9); }
+  .third  { flex: 1;   height: 8rem;  background: rgba(205,127,50,0.9); }
 
   .team-label {
-    position: absolute;
-    top: 8px;
-    width: 100%;
     text-align: center;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
   }
-  .podium img {
-    width: 40px;
-    height: 40px;
+
+  .players {
+    display: flex;
+    justify-content: space-evenly;
+    gap: var(--gap);
+  }
+  .players img {
+    width: var(--img-size);
+    height: var(--img-size);
     border-radius: 50%;
     object-fit: cover;
-    position: absolute;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.4);
   }
 
-  /* center column (1st place) images in a triangle */
-  .first img:nth-child(1) { left:50%; bottom: 10px; transform: translateX(-50%); }
-  .first img:nth-child(2) { left:40%; bottom: 60px; }
-  .first img:nth-child(3) { left:60%; bottom: 60px; }
-
-  /* left column (2nd place) */
-  .second img:nth-child(1) { left:50%; bottom: 10px; transform: translateX(-50%); }
-  .second img:nth-child(2) { left:40%; bottom: 50px; }
-  .second img:nth-child(3) { left:60%; bottom: 50px; }
-
-  /* right column (3rd place) */
-  .third img:nth-child(1) { left:50%; bottom: 10px; transform: translateX(-50%); }
-  .third img:nth-child(2) { left:40%; bottom: 50px; }
-  .third img:nth-child(3) { left:60%; bottom: 50px; }
+  @media (max-width: 600px) {
+    .players {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 </style>
+
+
 
 </head>
 <body>
@@ -103,15 +110,15 @@
             <div class="podium">
               <div class="second">
                 <div class="team-label">${comp.teams[1]?.teamName||''}</div>
-                ${renderImgs(comp.teams[1]?.players||[])}
+                <div class="players">${renderImgs(comp.teams[1]?.players||[])}</div>
               </div>
               <div class="first">
                 <div class="team-label">${comp.teams[0]?.teamName||''}</div>
-                ${renderImgs(comp.teams[0]?.players||[])}
+                <div class="players">${renderImgs(comp.teams[0]?.players||[])}</div>
               </div>
               <div class="third">
                 <div class="team-label">${comp.teams[2]?.teamName||''}</div>
-                ${renderImgs(comp.teams[2]?.players||[])}
+                <div class="players">${renderImgs(comp.teams[2]?.players||[])}</div>
               </div>
             </div>`;
           container.appendChild(box);
