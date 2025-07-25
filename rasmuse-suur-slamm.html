@@ -10,7 +10,7 @@
       --pad: 1rem;
       --img-size: 4rem;         /* perfect for phone */
       --label-space: 2.5rem;
-      --podium-max: 12;         /* rem for top-rank bar */
+      --podium-max: 12;         /* rem for top‐rank bar */
       --podium-step: 2;         /* rem per rank drop */
     }
 
@@ -73,6 +73,13 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
     }
 
+    .team-score {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+
     .players {
       display: flex;
       justify-content: space-evenly;
@@ -97,10 +104,12 @@
   </style>
 </head>
 <body>
-  <h1>Competition Results</h1>
-  <div id="results">Loading…</div>
+  <h1>Tulemused</h1>
+  <div id="results">Laeb...</div>
 
   <script>
+    const PAR = 28;  // golf par
+
     fetch('/data/results.json?t=' + Date.now(), { cache: 'no-store' })
       .then(r => { if (!r.ok) throw new Error(r.statusText); return r.json(); })
       .then(json => {
@@ -109,12 +118,12 @@
         container.innerHTML = '';
 
         comps.forEach(comp => {
-          // 1) take top-3 teams by score
+          // 1) sort by stroke count ascending (lower = better) and take top 3
           const sorted = [...comp.teams]
-            .sort((a, b) => b.score - a.score)
+            .sort((a, b) => a.score - b.score)
             .slice(0, 3);
 
-          // 2) compute competition-rank (ties share rank)
+          // 2) compute competition‐rank (ties share the same rank)
           const ranks = [];
           sorted.forEach((t, i) => {
             if (i > 0 && sorted[i].score === sorted[i - 1].score) {
@@ -124,35 +133,42 @@
             }
           });
 
-          // 3) build HTML
-          const box = document.createElement('div');
-          box.className = 'comp-box';
+          // helper: pick CSS class by rank
+          const colorClass = rank =>
+            rank === 1 ? 'first'
+          : rank === 2 ? 'second'
+          :               'third';
 
-          // helper: pick CSS class
-          const colorClass = idx =>
-            idx === 0 ? 'first'
-            : idx === 1 ? 'second'
-            : 'third';
+          // read CSS vars once
+          const rootStyle = getComputedStyle(document.documentElement);
+          const pm = parseFloat(rootStyle.getPropertyValue('--podium-max'));
+          const ps = parseFloat(rootStyle.getPropertyValue('--podium-step'));
 
+          // 3) build the 3 podium columns
           const cols = sorted.map((team, i) => {
             const rank = ranks[i];
-            // read the CSS vars:
-            const rootStyle = getComputedStyle(document.documentElement);
-            const pm = parseFloat(rootStyle.getPropertyValue('--podium-max'));
-            const ps = parseFloat(rootStyle.getPropertyValue('--podium-step'));
-            // compute height in rem
             const heightRem = pm - (rank - 1) * ps;
+            // compute score relative to par
+            const diff = team.score - PAR;
+            const diffLabel = diff === 0
+              ? 'E'
+              : (diff > 0 ? `+${diff}` : `${diff}`);
+
             return `
-              <div class="${colorClass(i)}" style="min-height:${heightRem}rem">
-                <div class="team-label">${team.teamName}</div>
+              <div class="${colorClass(rank)}" style="min-height:${heightRem}rem">
+                <div>
+                  <div class="team-label">${team.teamName}</div>
+                  <div class="team-score">${diffLabel}</div>
+                </div>
                 <div class="players">${renderImgs(team.players)}</div>
               </div>`;
           }).join('');
 
+          const box = document.createElement('div');
+          box.className = 'comp-box';
           box.innerHTML = `
             <div class="comp-title">${comp.competitionName}</div>
             <div class="podium">${cols}</div>`;
-
           container.appendChild(box);
         });
       })
