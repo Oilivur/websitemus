@@ -5,107 +5,84 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Rasmuse Suur Slämm</title>
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 1em;
-      background: #f0f0f0;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 1em;
-    }
-    #results {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-    }
-    .comp-box {
-      position: relative;
-      background: url('assets/beach.jpg') center/cover no-repeat;
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 1em;
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    .comp-title {
-      font-size: 1.4em;
-      font-weight: bold;
-      margin-bottom: 0.5em;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-    }
-    .podium {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 0.5em;
-    }
-    .podium > div {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      flex-shrink: 0;
-      border-radius: 6px;
-    }
-    .podium .first {
-      width: 30%;
-      height: 150px;
-      background: rgba(255,215,0,0.9);
-    }
-    .podium .second {
-      width: 25%;
-      height: 120px;
-      background: rgba(192,192,192,0.9);
-    }
-    .podium .third {
-      width: 25%;
-      height: 100px;
-      background: rgba(205,127,50,0.9);
-    }
-    .podium div .team-label {
-      position: absolute;
-      top: 8px;
-      width: 100%;
-      text-align: center;
-      font-weight: bold;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-    }
-    .podium img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    }
-    /* Position the three images in a triangle for each podium column */
-    .first img:nth-child(1) { position:absolute; bottom: 10px; left:50%; transform: translateX(-50%); }
-    .first img:nth-child(2) { position:absolute; bottom: 60px; left:40%; transform: translateX(-50%); }
-    .first img:nth-child(3) { position:absolute; bottom: 60px; left:60%; transform: translateX(-50%); }
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 1em;
+    background: #f0f0f0;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  #results {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  .comp-box {
+    background: url('assets/beach.jpg') center/cover no-repeat;
+    border-radius: 12px;
+    padding: 1em;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .comp-title {
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  }
+  .podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.5em;
+    /* allow sideways scroll on mobile */
+    overflow-x: auto;
+  }
+  .podium > div {
+    position: relative;
+    flex-shrink: 0;
+    padding-top: 32px; /* space so images don’t cover the label */
+    border-radius: 6px;
+  }
+  .first  { width: 30%; height: 150px; background: rgba(255,215,0,0.9); }
+  .second { width: 25%; height: 120px; background: rgba(192,192,192,0.9); }
+  .third  { width: 25%; height: 100px; background: rgba(205,127,50,0.9); }
 
-    .second img:nth-child(1) { position:absolute; bottom: 10px; left:50%; transform: translateX(-50%); }
-    .second img:nth-child(2) { position:absolute; bottom: 50px; left:35%; transform: translateX(-50%); }
-    .second img:nth-child(3) { position:absolute; bottom: 50px; left:65%; transform: translateX(-50%); }
+  .team-label {
+    position: absolute;
+    top: 8px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  }
+  .podium img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+  }
 
-    .third img:nth-child(1) { position:absolute; bottom: 10px; left:50%; transform: translateX(-50%); }
-    .third img:nth-child(2) { position:absolute; bottom: 50px; left:40%; transform: translateX(-50%); }
-    .third img:nth-child(3) { position:absolute; bottom: 50px; left:60%; transform: translateX(-50%); }
+  /* center column (1st place) images in a triangle */
+  .first img:nth-child(1) { left:50%; bottom: 10px; transform: translateX(-50%); }
+  .first img:nth-child(2) { left:40%; bottom: 60px; }
+  .first img:nth-child(3) { left:60%; bottom: 60px; }
 
-    /* Responsive: stack podiums vertically on narrow screens */
-    @media (max-width: 600px) {
-      .podium {
-        flex-direction: column;
-        gap: 0.75em;
-      }
-      .podium .second,
-      .podium .first,
-      .podium .third {
-        width: 80% !important;
-        margin: auto;
-      }
-    }
-  </style>
+  /* left column (2nd place) */
+  .second img:nth-child(1) { left:50%; bottom: 10px; transform: translateX(-50%); }
+  .second img:nth-child(2) { left:40%; bottom: 50px; }
+  .second img:nth-child(3) { left:60%; bottom: 50px; }
+
+  /* right column (3rd place) */
+  .third img:nth-child(1) { left:50%; bottom: 10px; transform: translateX(-50%); }
+  .third img:nth-child(2) { left:40%; bottom: 50px; }
+  .third img:nth-child(3) { left:60%; bottom: 50px; }
+</style>
+
 </head>
 <body>
   <h1>Competition Results</h1>
