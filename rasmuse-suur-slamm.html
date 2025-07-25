@@ -145,10 +145,22 @@
           'Error loading results: ' + err;
         console.error(err);
       });
+    function slugify(name) {
+        return name
+          // normalize accents to decomposed form, then strip diacritics
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')   // non-alphanumeric → hyphen
+          .replace(/^-+|-+$/g, '');      // trim leading/trailing hyphens
+    }
+
     function renderImgs(players) {
-      return players.slice(0,3).map(p =>
-        `<img src="${p.imageUri}" alt="" title="${p.name}"/>`
-      ).join('');
+      return players.slice(0,3).map(p => {
+        const file = slugify(p.name) + '.png';  // or `.png` if needed
+        const url  = `/assets/players/${file}`;
+        return `<img src="${url}" alt="${p.name}" title="${p.name}"
+               onerror="this.src='/assets/players/placeholder.png'"/>`;
+      }).join('');
     }
   </script>
 </body>
