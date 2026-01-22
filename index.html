@@ -1,130 +1,101 @@
 <!doctype html>
 <html lang="et">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rasmus Kalep - esinejaleht</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rasmus Kalep - esinejaleht</title>
+
+    <style>
+        :root {
+            --bg: #0b0f14;
+            --strip: #f2c94c;
+            --text: #111;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(
+                75rem 44rem at 20% 20%,
+                #1b2a3a 0%,
+                var(--bg) 60%
+            );
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .hint {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+
+            max-width: 45rem;
+            margin: 0;
+
+            transform: none;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1.125rem;
+            letter-spacing: 0.04em;
+            text-align: left;
+        }
+
+        .diagonal-strip {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 140vmax;
+            height: 5.6rem;
+            transform: translate(-50%, -50%) rotate(-18deg);
+            background: linear-gradient(90deg, #f7d365, var(--strip));
+            box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.45);
+            display: grid;
+            place-items: center;
+            z-index: 10;
+        }
+
+        .diagonal-strip span {
+            color: var(--text);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: clamp(1.125rem, 3vw, 2.125rem);
+            padding: 0 1.5rem;
+            text-shadow: 0 0.0625rem 0 rgba(255, 255, 255, 0.35);
+            user-select: none;
+        }
+
+        .diagonal-strip::before,
+        .diagonal-strip::after {
+            content: "";
+            position: absolute;
+            inset-block: 0;
+            width: 0.625rem;
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        .diagonal-strip::before { inset-inline-start: 0; }
+        .diagonal-strip::after  { inset-inline-end: 0; }
+    </style>
 </head>
-<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Galerii suum">
-  <button class="lb-close" aria-label="Sulge (Esc)">✕</button>
-  <button class="lb-prev" aria-label="Eelmised (←)">‹</button>
-  <div class="lb-content" tabindex="-1">
-    <img class="lb-image" src="" alt="">
-    <figcaption class="lb-caption" aria-hidden="true"></figcaption>
-  </div>
-  <button class="lb-next" aria-label="Järgmine (→)">›</button>
-</div>
+
 <body>
-    <header class="site-header simple">
-    <div class="container header-inner">
-        <div class="brand">
-        <h1>Rasmus Kalep</h1>
-        <p class="tag">laul • kitarr • klaver</p>
+    <div class="diagonal-strip" aria-label="Leht on töös">
+        <span>Leht on töös</span>
+    </div>
+
+    <div class="hint">
+        <div style="font-size: 1.375rem; font-weight: 700; color: rgba(255,255,255,0.85);">
+            Rasmuss 🎶🎵🎶
+        </div>
+        <div style="max-width: 45rem; margin-top: 0.5rem;">
+            Leht on hetkel uuendamisel. Tule varsti tagasi.
         </div>
     </div>
-    </header>
-
-
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <h2>Tunded, mis jäävad meelde</h2>
-          <p class="lead">Hei! Mina olen Rasmus — laulja, purjetaja ja eluavastaja. Toon lavale siiraid ja hingestatud tõlgendusi nii kitarri kui klaveri saatel.</p>
-          <a class="btn-large" href="kontakt.html">Kutsu esinema</a>
-        </div>
-
-        <div class="hero-media">
-          <!-- Hero image -->
-          <div class="hero-photo" role="img" aria-label="Rasmus esinemas" style="background-image:url('pildid/piano.jpeg')"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="container about">
-      <h3>Minust</h3>
-      <p>Hei! Mina olen Rasmus – laulja, purjetaja ja eluavastaja. Minu jaoks muusika on alati olnud viis tuua inimesed kokku ning rääkida lugusid, mida ainult sõnadega edasi anda ei saa. Juba lapsena sain aru, et mõni tunne, mida elu pakub, on liiga suur ainult sõnade jaoks – selleks ongi mul muusika.</p>
-
-      <p>See on minu viis emotsioone väljendada ja neid kuulajani tuua. Loodan, et iga kord, kui laulan või mängin, sünnib kuulajas tunne, mis jääb kauaks meelde – sest usun, et muusika jõul on tohutu vägi. Muusika jagamine on minu jaoks midagi palju enamat kui lihtsalt esinemine. Hetked, kui näen publiku silmis emotsiooni, kuulen nende naeru või tajun vaikust, tekitavad minus iga kord külmavärinaid. See tunne ja energia, mis laval ja publiku vahel tekib, on nii võimas, et tahan seda ikka ja jälle uuesti kogeda.</p>
-
-      <p>Olen jaganud oma muusikat ka Eesti televaatajatega, osaledes saadetes „Ma näen su häält“ ja „Täheks sündinud“. Need kogemused on andnud mulle enesekindlust, lavakogemust ja kinnitanud tunnet, et muusika on minu tee.</p>
-
-      <p>Esinen nii kitarri kui klaveri saatel, andes tuntud lugudele oma siira ja hingestatud tõlgenduse. Kohandan repertuaari vastavalt sündmusele – olgu see esimene pulmatants, sünnipäeva õhtusöök või ärisündmus. Võin esineda nii soolona kui ka duo koosseisus, et luua just Sinu üritusele sobiv meeleolu ja atmosfäär.</p>
-
-      <p class="accent">🎶 Jään pikisilmi ootama, kuidas saame üheskoos Sinu üritusele lisada killukese soojust ja luua muusikalisi maagiahetki 🎶</p>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery" class="container gallery">
-    <h3>Galerii</h3>
-    <div class="grid">
-        <img class="gallery-item" src="pildid/piano.jpg"  data-full="pildid/piano.jpeg" alt="">
-        <img class="gallery-item" src="pildid/piano.jpg"  data-full="pildid/piano.jpeg" alt="">
-        <img class="gallery-item" src="pildid/piano.jpg"  data-full="pildid/piano.jpeg" alt="">
-        <img class="gallery-item" src="pildid/piano.jpg"  data-full="pildid/piano.jpeg" alt="">
-    </div>
-    </section>
-
-
-    <!-- SPOTIFY / LISTEN -->
-    <section id="music" class="container music">
-      <h3>Kuula Spotifyst</h3>
-      <div class="music-grid">
-        <div class="spotify-embed">
-          <iframe style="border-radius:12px"
-                  src="https://open.spotify.com/embed/artist/2jfnKffr4qi3eO32XKlZ8z?utm_source=generator"
-                  width="100%" height="352" frameborder="0"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-
-        <aside class="music-info" aria-labelledby="soovitus-title">
-        <h4 id="soovitus-title">Soovitus</h4>
-        <p>
-            Kui soovid, et ma esineksin Sinu üritusel, saada lühike päring — kuupäev, koht ja soovitav meeleolu.
-            Vastan tavaliselt 24–48 tunni jooksul.
-        </p>
-        <a class="btn-large" href="kontakt.html">Kutsu mind esinema</a>
-        </aside>
-      </div>
-    </section>
-  </main>
-
-    <footer class="site-footer minimal">
-        <div class="container footer-grid minimal-grid">
-            <div class="social">
-            <!-- Facebook (inline SVG) -->
-            <a class="social-btn" href="https://www.rasmuss.ee"
-                aria-label="Facebook" title="Facebook" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
-                <path class="svg-fill" d="M22 12.07C22 6.49 17.52 2 12 2S2 6.49 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.04H7.9v-2.9h2.53V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.46h-1.25c-1.23 0-1.61.77-1.61 1.56v1.88h2.74l-.44 2.9h-2.3v7.04C18.34 21.25 22 17.09 22 12.07z"/>
-                </svg>
-            </a>
-
-            <!-- Instagram (inline SVG) -->
-            <a class="social-btn" href="https://www.rasmuss.ee" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
-                <path class="svg-fill" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A3.8 3.8 0 1 0 15.8 12 3.8 3.8 0 0 0 12 8.2zM18.4 6a1.1 1.1 0 1 0 1.1 1.1A1.1 1.1 0 0 0 18.4 6z"/>
-                </svg>
-            </a>
-
-            <!-- TikTok (inline SVG) -->
-            <a class="social-btn" href="https://www.rasmuss.ee" aria-label="TikTok" title="TikTok" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
-                <path class="svg-fill" d="M12 2v12.3A4.7 4.7 0 1 1 9 9.6V4h3z"/>
-                </svg>
-            </a>
-            </div>
-
-            <div class="copyright muted">© <span id="year"></span> Rasmus Kalep</div>
-        </div>
-    </footer>
-
-
-
-  <script src="script.js"></script>
 </body>
 </html>
