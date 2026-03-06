@@ -31,7 +31,7 @@ export function Homepage() {
             </p>
             <div className="flex gap-4 justify-center">
               <Link
-                to="/about"
+                to="/sample/about"
                 className="px-8 py-3 bg-[#D4C5A0] text-[#3D3326] rounded-md hover:bg-[#C4B590] transition-colors"
               >
                 Learn More
@@ -137,7 +137,7 @@ export function Homepage() {
         </div>
         <div className="text-center">
           <Link
-            to="/gallery"
+            to="/sample/gallery"
             className="inline-block px-8 py-3 bg-[#D4C5A0] text-[#3D3326] rounded-md hover:bg-[#C4B590] transition-colors"
           >
             View Full Gallery

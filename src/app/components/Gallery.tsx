@@ -101,7 +101,7 @@ export function Gallery() {
           </p>
           <div className="flex justify-center gap-4">
             <Link
-              to="/about"
+              to="/sample/about"
               className="px-8 py-3 bg-[#8B7355] text-white rounded-md hover:bg-[#7A6348] transition-colors"
             >
               Book a Performance

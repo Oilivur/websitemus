@@ -6,20 +6,20 @@ import { About } from "./components/About";
 import { Gallery } from "./components/Gallery";
 
 export default function App() {
-    const path = window.location.pathname;
+    const hash = window.location.hash;
 
-    if (path === "/") {
+    if (!hash || hash === "#/" || hash === "#") {
         return <MaintenancePage />;
     }
 
-    if (path.startsWith("/sample")) {
+    if (hash.startsWith("#/sample")) {
         return (
             <HashRouter>
                 <Routes>
                     <Route path="/" element={<Root />}>
-                        <Route index element={<Homepage />} />
-                        <Route path="about" element={<About />} />
-                        <Route path="gallery" element={<Gallery />} />
+                        <Route path="sample" element={<Homepage />} />
+                        <Route path="sample/about" element={<About />} />
+                        <Route path="sample/gallery" element={<Gallery />} />
                     </Route>
                 </Routes>
             </HashRouter>
