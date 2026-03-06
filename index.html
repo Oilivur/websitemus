@@ -1,101 +1,12 @@
 <!doctype html>
-<html lang="et">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rasmus Kalep - esinejaleht</title>
-
-    <style>
-        :root {
-            --bg: #0b0f14;
-            --strip: #f2c94c;
-            --text: #111;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            background: radial-gradient(
-                75rem 44rem at 20% 20%,
-                #1b2a3a 0%,
-                var(--bg) 60%
-            );
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-            overflow: hidden;
-        }
-
-        .hint {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 1.5rem;
-
-            max-width: 45rem;
-            margin: 0;
-
-            transform: none;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 1.125rem;
-            letter-spacing: 0.04em;
-            text-align: left;
-        }
-
-        .diagonal-strip {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            width: 140vmax;
-            height: 5.6rem;
-            transform: translate(-50%, -50%) rotate(-18deg);
-            background: linear-gradient(90deg, #f7d365, var(--strip));
-            box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.45);
-            display: grid;
-            place-items: center;
-            z-index: 10;
-        }
-
-        .diagonal-strip span {
-            color: var(--text);
-            font-weight: 800;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-size: clamp(1.125rem, 3vw, 2.125rem);
-            padding: 0 1.5rem;
-            text-shadow: 0 0.0625rem 0 rgba(255, 255, 255, 0.35);
-            user-select: none;
-        }
-
-        .diagonal-strip::before,
-        .diagonal-strip::after {
-            content: "";
-            position: absolute;
-            inset-block: 0;
-            width: 0.625rem;
-            background: rgba(0, 0, 0, 0.18);
-        }
-
-        .diagonal-strip::before { inset-inline-start: 0; }
-        .diagonal-strip::after  { inset-inline-end: 0; }
-    </style>
+    <title>razz</title>
 </head>
-
 <body>
-    <div class="diagonal-strip" aria-label="Leht on töös">
-        <span>Leht on töös</span>
-    </div>
-
-    <div class="hint">
-        <div style="font-size: 1.375rem; font-weight: 700; color: rgba(255,255,255,0.85);">
-            Rasmuss 🎶🎵🎶
-        </div>
-        <div style="max-width: 45rem; margin-top: 0.5rem;">
-            Leht on hetkel uuendamisel. Tule varsti tagasi.
-        </div>
-    </div>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
