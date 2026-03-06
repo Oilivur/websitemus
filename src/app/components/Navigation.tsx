@@ -5,8 +5,8 @@ export function Navigation() {
   const location = useLocation();
 
   const isActive = (path: string) => {
-    if (path === "/sample") {
-      return location.pathname === "/sample";
+    if (path === "/") {
+      return location.pathname === "/";
     }
     return location.pathname.startsWith(path);
   };
@@ -15,14 +15,14 @@ export function Navigation() {
       <nav className="bg-[#E8DCC4] border-b border-[#D4C5A0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/sample" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <Music2 className="w-8 h-8 text-[#8B7355]" />
               <span className="text-xl text-[#5C4E3A]">Rasmus Kalep</span>
             </Link>
 
             <div className="flex gap-8">
               <Link
-                  to="/sample"
+                  to="/"
                   className={`px-3 py-2 rounded-md transition-colors ${
                       isActive("/sample") && location.pathname === "/sample"
                           ? "bg-[#D4C5A0] text-[#3D3326]"
@@ -32,7 +32,7 @@ export function Navigation() {
                 Home
               </Link>
               <Link
-                  to="/sample/about"
+                  to="/about"
                   className={`px-3 py-2 rounded-md transition-colors ${
                       isActive("/sample/about")
                           ? "bg-[#D4C5A0] text-[#3D3326]"
@@ -42,7 +42,7 @@ export function Navigation() {
                 About & Contact
               </Link>
               <Link
-                  to="/sample/gallery"
+                  to="/gallery"
                   className={`px-3 py-2 rounded-md transition-colors ${
                       isActive("/sample/gallery")
                           ? "bg-[#D4C5A0] text-[#3D3326]"
