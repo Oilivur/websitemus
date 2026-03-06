@@ -10,6 +10,7 @@ import razzled from "./images/razzled.jpeg";
 import loungemus from "./images/loungemus.jpeg";
 // @ts-ignore
 import soldiermus from "./images/soldiermus.jpeg";
+import { Link } from "react-router-dom";
 
 export function Homepage() {
   return (
@@ -29,12 +30,12 @@ export function Homepage() {
               Pianist & Vocalist
             </p>
             <div className="flex gap-4 justify-center">
-              <a
-                href="#about"
+              <Link
+                to="/sample/about"
                 className="px-8 py-3 bg-[#D4C5A0] text-[#3D3326] rounded-md hover:bg-[#C4B590] transition-colors"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -135,12 +136,12 @@ export function Homepage() {
           </div>
         </div>
         <div className="text-center">
-          <a
-            href="/gallery"
+          <Link
+            to="/sample/gallery"
             className="inline-block px-8 py-3 bg-[#D4C5A0] text-[#3D3326] rounded-md hover:bg-[#C4B590] transition-colors"
           >
             View Full Gallery
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -14,6 +14,8 @@ import spiderpigmus from "./images/spiderpigmus.jpeg";
 import beachmus from "./images/beachmus.jpeg";
 // @ts-ignore
 import mmmus from "./images/mmmus.jpeg";
+import { Link } from "react-router-dom";
+
 
 export function Gallery() {
   const images = [
@@ -98,12 +100,12 @@ export function Gallery() {
             behind-the-scenes content.
           </p>
           <div className="flex justify-center gap-4">
-            <a
-              href="/about"
+            <Link
+              to="/sample/about"
               className="px-8 py-3 bg-[#8B7355] text-white rounded-md hover:bg-[#7A6348] transition-colors"
             >
               Book a Performance
-            </a>
+            </Link>
           </div>
         </div>
       </div>
